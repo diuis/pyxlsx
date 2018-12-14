@@ -32,16 +32,13 @@ convertedXslx = xlsxwriter.Workbook(
 
 sheets = range(1, 256)
 for sheetItem in sheets:
-
     xslxToConvert = load_workbook(
         filename=workDirectory + '/file_' + str(sheetItem) + '.xlsx', read_only=True)
     xslxToConvertSheet = xslxToConvert.active
-
     worksheet = convertedXslx.add_worksheet()
     for rowIndex, row in enumerate(xslxToConvertSheet.values):
-        print('row is ' + str(row))
+        print('file is ' +  str(sheetItem) + ' - row is ' + str(row))
         for colIndex, column in enumerate(row):
-            print('column is ' + str(column))
             worksheet.write(rowIndex, colIndex, str(column))
 
 convertedXslx.close()
